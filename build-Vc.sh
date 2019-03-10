@@ -18,6 +18,11 @@ if [[ ! -d ${DIR_SRC} ]]; then
     )
 fi
 
+if [[  -x $(command -v CC) ]]; then
+    export CXX=g++
+    export CC=gcc
+fi
+
 ${CMAKE_COMMAND} \
     -Wno-dev \
     -H${DIR_SRC} \
@@ -27,6 +32,11 @@ ${CMAKE_COMMAND} \
     -DBUILD_TESTING=OFF
 
 ${CMAKE_COMMAND} --build ${DIR_BUILD} --target install -- -j${PARALLEL_BUILD} VERBOSE=1
+
+if [[  -x $(command -v CC) ]]; then
+    export CXX=$(which CC)
+    export CC=$(which cc)
+fi
 
 mkdir -p $(dirname ${FILE_MODULE})
 cat >${FILE_MODULE} <<EOF

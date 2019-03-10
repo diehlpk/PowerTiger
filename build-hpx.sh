@@ -2,7 +2,7 @@
 
 set -ex
 
-: ${SOURCE_ROOT:?} ${INSTALL_ROOT:?} ${GCC_VERSION:?} ${LIBHPX:?} ${BUILD_TYPE:?} \
+: ${SOURCE_ROOT:?} ${INSTALL_ROOT:?} ${GCC_VERSION:?} ${BUILD_TYPE:?} \
     ${CMAKE_VERSION:?} ${CMAKE_COMMAND:?} ${OCT_WITH_CUDA:?} ${CUDA_SM:?} \
     ${BOOST_VERSION:?} ${BOOST_BUILD_TYPE:?} \
     ${JEMALLOC_VERSION:?} ${HWLOC_VERSION:?} ${VC_VERSION:?} ${HPX_VERSION:?} \
@@ -27,7 +27,9 @@ if [[ ! -d ${DIR_SRC} ]]; then
     )
 fi
 
+
 ${CMAKE_COMMAND} \
+    -DCMAKE_TOOLCHAIN_FILE=/scratch/snx3000/pdiehl/PowerTiger/src/hpx/cmake/toolchains/CrayStatic.cmake \
     -H${DIR_SRC} \
     -B${DIR_BUILD} \
     -DCMAKE_INSTALL_PREFIX=${DIR_INSTALL} \

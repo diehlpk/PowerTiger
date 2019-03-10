@@ -17,7 +17,9 @@ if [[ ! -d ${DIR_SRC} ]]; then
         mkdir -p ${DIR_SRC}
         cd ${DIR_SRC}
         wget -O- ${DOWNLOAD_URL} | tar xj --strip-components=1
-        echo "using gcc : : $CXX ; " >tools/build/src/user-config.jam
+        if [[ ! -x $(command -v CC) ]]; then
+            echo "using gcc : : $CXX ; " >tools/build/src/user-config.jam
+	fi
     )
 fi
 #if [[ -d "boost_${BOOST_VERSION//./_}" ]]; then

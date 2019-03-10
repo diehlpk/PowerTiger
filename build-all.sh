@@ -164,13 +164,23 @@ mkdir -p ${SOURCE_ROOT} ${INSTALL_ROOT}
     echo "Building CMake"
     ./build-cmake.sh
 )
-export CMAKE_COMMAND=${INSTALL_ROOT}/cmake/bin/cmake
 
 ################################################################################
 # Dependencies
 ################################################################################
 # Set GCC Environment Variables
-source gcc-config.sh
+
+
+if [[ ! -x $(command -v CC) ]]; then
+    source gcc-config.sh
+    export CMAKE_COMMAND=${INSTALL_ROOT}/cmake/bin/cmake
+else
+    export CXX=$(which CC) 
+    export CC=$(which cc)
+    export CMAKE_COMMAND=$(which cmake)
+    export export CXXFLAGS="-fPIC -static   "
+    export CFLAGS="-static"
+fi
 
 [[ -v BUILD_TARGET_OPENMPI ]] && \
 (
