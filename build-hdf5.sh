@@ -15,7 +15,7 @@ else
     cd ..
 fi
 cd hdf5
-git checkout hdf5_1_10_4 
+git checkout hdf5-1_10_4 
 cd $INSTALL_ROOT
 mkdir -p hdf5 
 cd hdf5
