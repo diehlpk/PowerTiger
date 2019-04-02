@@ -12,7 +12,7 @@ if [ ! -d "cmake-${CMAKE_VERSION}/" ]; then
    curl -JL https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}.tar.gz | tar xz
 fi
 cd cmake-${CMAKE_VERSION}
-mkdir build
+mkdir -p build
 cd build
 ./../bootstrap --parallel=${PARALLEL_BUILD} --prefix=$INSTALL_ROOT/cmake
 make install
