@@ -9,10 +9,6 @@ fi
 cd $SOURCE_ROOT
 if [ ! -d "hdf5/" ]; then
     git clone https://github.com/live-clones/hdf5
-else
-    cd hdf5
-    git pull
-    cd ..
 fi
 cd hdf5
 git checkout hdf5-1_10_4 
