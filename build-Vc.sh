@@ -10,12 +10,11 @@ fi
 
 cd $SOURCE_ROOT
 if [ ! -d "Vc/" ]; then
-    git clone https://github.com/VcDevel/Vc.git
+    git clone https://github.com/STEllAR-GROUP/Vc.git
+    cd Vc
+    git checkout pfandedd_inlining_AVX512
 fi
 
-cd Vc
-git fetch --all --tags --prune
-git checkout tags/1.4.1
 cd $INSTALL_ROOT
 mkdir -p Vc
 cd Vc
