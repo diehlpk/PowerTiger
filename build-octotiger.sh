@@ -23,7 +23,7 @@ cd octotiger
 export LD_LIBRARY_PATH=$INSTALL_ROOT/gcc/lib64:$INSTALL_ROOT/silo/lib/:$INSTALL_ROOT/hdf5/lib:$LD_LIBRARY_PATH
 export HDF5_ROOT=$INSTALL_ROOT/hdf5/
 
-$INSTALL_ROOT/cmake/bin/cmake \
+cmake \
 -DCMAKE_PREFIX_PATH=${BUILD_ROOT}/build/hpx \
 -DCMAKE_CXX_COMPILER=$CXX \
 -DCMAKE_CXX_FLAGS="$CXXFLAGS -fpermissive" \
