@@ -132,6 +132,11 @@ while [[ -n $6 ]]; do
             export BUILD_TARGET_HPX=
             shift
         ;;
+        kokkos)
+            echo 'Target octotiger will build.'
+            export BUILD_TARGET_KOKKOS=
+            shift
+        ;;
         octotiger)
             echo 'Target octotiger will build.'
             export BUILD_TARGET_OCTOTIGER=
@@ -277,6 +282,11 @@ fi
 (
     echo "Building HPX"
     ./build-hpx.sh
+)
+[[ -n ${BUILD_TARGET_KOKKOS+x} ]] && \
+(
+    echo "Building Kokkos"
+    ./build-kokkos.sh
 )
 [[ -n ${BUILD_TARGET_LIBFABRIC+x} ]] && \
 (
